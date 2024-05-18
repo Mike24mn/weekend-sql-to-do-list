@@ -47,7 +47,7 @@ router.put('/:id', (req, res) => {
     let todoId = req.params.id;
     //not sure if I should change direction 
     //isRead refers to the body as the isRead is in the data part of put request
-    let complete  = req.body.isComplete;
+    let isComplete  = req.body.isComplete;
   
     let queryText = `
     UPDATE "todos" SET "isComplete"= NOT "isComplete"
