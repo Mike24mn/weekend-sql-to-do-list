@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     }
 
     let queryText = `INSERT INTO "todos" ("text", "isComplete")
-                     VALUES ($1, $2);`;
+                     VALUES ($1, $2) RETURNING *;`;
     pool.query(queryText, [newToDo.text, newToDo.isComplete])
       .then(result => {
         res.sendStatus(201);
@@ -45,8 +45,7 @@ router.put('/:id', (req, res) => {
 
     
     let todoId = req.params.id;
-    //not sure if I should change direction 
-    //isRead refers to the body as the isRead is in the data part of put request
+
     let isComplete  = req.body.isComplete;
   
     let queryText = `
@@ -60,9 +59,7 @@ router.put('/:id', (req, res) => {
   
     //in the below statement [] turns the todoId into an Array
 
-    // pool.query needed to take queryText and both todoId and transfer, it was missing transfer - Michael
-
-    pool.query(queryText, [todoId])
+    pool.query(queryText, [isComplete, todoId])
       .then((result) => {
         res.sendStatus(204)
       })
@@ -78,7 +75,7 @@ router.delete('/:id', (req, res) => {
 
   let reqId = [req.params.id]
 
-  let queryText = `DELETE FROM "todos" WHERE "id" = $1;`
+  let queryText = `DELETE FROM "todos" WHERE "id" = $1 RETURNING *;`
 
   pool.query(queryText, reqId)
   .then((result) => {
