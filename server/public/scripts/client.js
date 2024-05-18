@@ -57,11 +57,10 @@ function renderToDos(todos) {
 
   for (let i = 0; i < todos.length; i += 1) {
     let currentToDo = todos[i];
-    console.log("Current to do loop iteration: ", currentToDo);
     // For each to do, append a new row to our table
-
+    if (currentToDo.isComplete === false) {
       todoTable.innerHTML += `
-      <tr data-testid="toDoItem">
+      <tr>
         <td>${currentToDo.text}</td>      
         <td>${currentToDo.isComplete}</td>
        <td> 
@@ -77,7 +76,25 @@ function renderToDos(todos) {
       </tr>
 
 
-    `
+    `;
+    } else if (currentToDo.isComplete === true) {
+      todoTable.innerHTML += `
+      <tr>
+        <td>${currentToDo.text}</td>      
+       <td>${currentToDo.isComplete}</td>
+       <td>
+       <button onClick="deleteToDos(${currentToDo.id})">
+       Delete
+       </button>
+       </td>
+
+       <td> 
+      </td>
+      </tr>
+
+
+    `;
+    }
   }
 }
 
@@ -101,7 +118,7 @@ function handleSubmit(event) {
 
   let todo = {};
 
-  todo.text = document.getElementById("toDoInput").value;
+  todo.text = document.getElementById("toDoItem").value;
 
   saveToDos(todo);
 
@@ -151,5 +168,3 @@ getToDos();
 /* todos has
 // text and isComplete, also id 
 */
-
-// REMEMBER TO CHANGE ID WITHIN MY HTML IF IT CONFLICTS WITH DATA ID TESTS
