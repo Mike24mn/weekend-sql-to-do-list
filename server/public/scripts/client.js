@@ -60,16 +60,16 @@ function renderToDos(todos) {
     // For each to do, append a new row to our table
     if (currentToDo.isComplete === false) {
       todoTable.innerHTML += `
-      <tr>
+      <tr data-testid="toDoItem" class="incomplete">
         <td>${currentToDo.text}</td>      
         <td>${currentToDo.isComplete}</td>
        <td> 
-       <button onClick= "isFinished(${currentToDo.isComplete}, ${currentToDo.id})">
+       <button data-testid="completeButton" onClick= "isFinished(${currentToDo.isComplete}, ${currentToDo.id})">
     Goal Complete
     </button>
     </td>
     <td>
-    <button onClick="deleteToDos(${currentToDo.id})">
+    <button data-testid="deleteButton" onClick="deleteToDos(${currentToDo.id})">
     Delete
     </button>
     </td>
@@ -79,11 +79,11 @@ function renderToDos(todos) {
     `;
     } else if (currentToDo.isComplete === true) {
       todoTable.innerHTML += `
-      <tr>
+      <tr data-testid="toDoItem" class="completed">
         <td>${currentToDo.text}</td>      
        <td>${currentToDo.isComplete}</td>
        <td>
-       <button onClick="deleteToDos(${currentToDo.id})">
+       <button data-testid="deleteButton" onClick="deleteToDos(${currentToDo.id})">
        Delete
        </button>
        </td>

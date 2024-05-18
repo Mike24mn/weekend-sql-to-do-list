@@ -1,0 +1,13 @@
+.completed {
+    font-family: monospace;
+    font-weight: bold;
+    opacity: 0.9;
+    background-color: green
+    ;}
+
+.incomplete {
+    font-family: monospace;
+    font-weight: bold;
+    opacity: 0.9;
+    background-color: red;
+}
