@@ -10,8 +10,28 @@
 </head>
 <body>
   <header>
-    <h1>SQL TO-DO List</h1>
+    <h1>To Do List</h1>
   </header>
-
+  <section id="addToDo">
+    <h2>Add To-Do</h2>
+    <form id ="form">
+    <input type="text" id="toDoItem" value="" placeholder="Add To Do">
+    <button type="button" onClick = "handleSubmit(event)" id="addButton">Add New Item</button>
+    </form>
+  </section>
+  <section>
+    <h2>To Do List Items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>To Do:</th>
+          <th>Completed:</th>
+          <th>Delete:</th>
+        </tr>
+      </thead>
+      <tbody id="viewToDos">
+      </tbody>
+    </table>
+  </section>
 </body>
 </html>
