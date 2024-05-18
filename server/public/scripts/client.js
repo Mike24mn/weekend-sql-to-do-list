@@ -5,8 +5,12 @@ console.log("js");
 function getToDos() {
   console.log("in getToDos");
   // axios call to server to get to dos
-  axios.get("/todos").then((response) => {
+  axios.get("/todos")
+  .then((response) => {
     renderToDos(response.data); // render to dos
+  })
+  .catch((error) => {
+    console.log("error getting to do", error);
   });
 } // end getToDos
 
@@ -25,7 +29,7 @@ function deleteToDos(todosId) {
 }
 
 function saveToDos(todoToAdd) {
-  console.log("in saveToDos");
+  console.log("in saveToDos", todoToAdd);
   // axios call to server to get to dos
 
   axios({
@@ -34,7 +38,7 @@ function saveToDos(todoToAdd) {
     data: todoToAdd,
   })
     .then(function (response) {
-      console.log("saveToDo()", response.data);
+      console.log("saveToDo() respons: ", response.data);
       refreshToDos();
       //needs to be refresh not render as the newly added quoala needs to be updated by get in database
     })
@@ -46,26 +50,26 @@ function saveToDos(todoToAdd) {
 
 //add a RenderToDos
 
-function renderToDos(todo) {
+function renderToDos(todos) {
   let todoTable = document.getElementById("viewToDos");
   //might have to let if program trouble
   todoTable.innerHTML = "";
 
-  for (let i = 0; i < todo.length; i += 1) {
-    let currentToDo = todo[i];
+  for (let i = 0; i < todos.length; i += 1) {
+    let currentToDo = todos[i];
     // For each to do, append a new row to our table
-    if (todo.isComplete === false) {
+    if (currentToDo.isComplete === false) {
       todoTable.innerHTML += `
       <tr>
-        <td>${todo.text}</td>      
-        <td>${todo.isComplete}</td>
+        <td>${currentToDo.text}</td>      
+        <td>${currentToDo.isComplete}</td>
        <td> 
-       <button onClick= "isFinished(${todo.isComplete}, ${todo.id})">
+       <button onClick= "isFinished(${currentToDo.isComplete}, ${currentToDo.id})">
     Goal Complete
     </button>
     </td>
     <td>
-    <button onClick="deleteToDos(${todo.id})">
+    <button onClick="deleteToDos(${currentToDo.id})">
     Delete
     </button>
     </td>
@@ -73,13 +77,13 @@ function renderToDos(todo) {
 
 
     `;
-    } else if (todo.isComplete === true) {
+    } else if (currentToDo.isComplete === true) {
       todoTable.innerHTML += `
       <tr>
-        <td>${todo.text}</td>      
-       <td>${todo.isComplete}</td>
+        <td>${currentToDo.text}</td>      
+       <td>${currentToDo.isComplete}</td>
        <td>
-       <button onClick="deleteToDos(${todo.id})">
+       <button onClick="deleteToDos(${currentToDo.id})">
        Delete
        </button>
        </td>
@@ -117,6 +121,7 @@ function handleSubmit(event) {
   todo.text = document.getElementById("toDoItem").value;
 
   saveToDos(todo);
+
   let form = document.getElementById("form");
   form.reset();
 }
@@ -159,7 +164,7 @@ function isFinished(complete, todoId) {
     });
 }
 
-
+getToDos();
 /* todos has
 // text and isComplete, also id 
 */

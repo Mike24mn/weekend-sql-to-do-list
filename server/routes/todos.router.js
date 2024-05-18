@@ -24,6 +24,9 @@ router.post('/', (req, res) => {
     let newToDo = req.body;
     console.log(`Adding To Do`, newToDo);
   
+    if (newToDo.isComplete === undefined) {
+        newToDo.isComplete = false
+    }
 
     let queryText = `INSERT INTO "todos" ("text", "isComplete")
                      VALUES ($1, $2);`;
