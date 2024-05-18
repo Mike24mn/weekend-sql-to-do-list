@@ -1,13 +1,81 @@
-.completed {
-    font-family: monospace;
+body {
     font-weight: bold;
-    opacity: 0.9;
-    background-color: green
-    ;}
+    font-family: monospace;
+    margin: 20px;
+    background-image: url(./water\ color\ light\ bulb.jpeg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
 
-.incomplete {
+header {
+    text-decoration: underline;
+}
+
+#tdli {
+    text-decoration: underline;
+}
+  
+form {
+    margin-bottom: 20px;
+}
+  
+#toDoItem {
+    padding: 10px;
+    font-size: 16px;
+}
+  
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: monospace;
+}
+  
+.todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: monospace;
+}
+  
+.todo-table th,
+.todo-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-family: monospace;
+}
+  
+.todo-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+  
+.todo-table tr:hover {
+    background-color: #f1f1f1;
+}
+  
+.todo-table .completed {
+    background-color: #c8e6c9; 
+}
+  
+.todo-table .incomplete {
+    background-color: rgb(242, 65, 65); 
     font-family: monospace;
     font-weight: bold;
     opacity: 0.9;
-    background-color: red;
+}
+  
+#tableAdjust {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 5ch;
+    outline: auto;
+}
+  
+#messages {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: monospace;
 }

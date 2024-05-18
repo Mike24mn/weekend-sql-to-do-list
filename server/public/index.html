@@ -14,14 +14,16 @@
   </header>
   <section id="addToDo">
     <h2>Add To-Do</h2>
+    <div id="messages">
+
+    </div>
     <form id ="form">
     <input type="text" data-testid="toDoTextInput" id="toDoItem" value="" placeholder="Add To Do">
     <button type="button" data-testid="submitButton" onClick = "handleSubmit(event)" id="addButton">Add New Item</button>
     </form>
   </section>
   <section>
-    <h2>To Do List Items</h2>
-    <table>
+    <table class="todo-table">
       <thead>
         <tr>
           <th>To Do:</th>

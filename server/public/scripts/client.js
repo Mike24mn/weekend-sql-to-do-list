@@ -54,6 +54,7 @@ function renderToDos(todos) {
   let todoTable = document.getElementById("viewToDos");
   //might have to let if program trouble
   todoTable.innerHTML = "";
+  
 
   for (let i = 0; i < todos.length; i += 1) {
     let currentToDo = todos[i];
@@ -62,7 +63,7 @@ function renderToDos(todos) {
       todoTable.innerHTML += `
       <tr data-testid="toDoItem" class="incomplete">
         <td>${currentToDo.text}</td>      
-        <td>${currentToDo.isComplete}</td>
+        <td>${currentToDo.isComplete  ? 'Yes' : 'No'}</td>
        <td> 
        <button data-testid="completeButton" onClick= "isFinished(${currentToDo.isComplete}, ${currentToDo.id})">
     Goal Complete
@@ -81,7 +82,7 @@ function renderToDos(todos) {
       todoTable.innerHTML += `
       <tr data-testid="toDoItem" class="completed">
         <td>${currentToDo.text}</td>      
-       <td>${currentToDo.isComplete}</td>
+       <td>${currentToDo.isComplete ? 'Yes' : 'No'}</td>
        <td>
        <button data-testid="deleteButton" onClick="deleteToDos(${currentToDo.id})">
        Delete
@@ -118,6 +119,15 @@ function handleSubmit(event) {
 
   let todo = {};
 
+  let todoText = document.getElementById("toDoItem").value
+
+  let messageOutput = document.getElementById("messages") 
+
+
+if (todoText === "") {
+    messageOutput.innerHTML = "Failed to add to do, check input field!"
+    return;
+}
   todo.text = document.getElementById("toDoItem").value;
 
   saveToDos(todo);
@@ -137,7 +147,6 @@ function handleSubmit(event) {
 // based on booleans true/false
 
 // May need to change to do parameter below
-// Unfinished, left off here - Michael
 
 function isFinished(complete, todoId) {
   console.log("changing transfer status: ", complete, todoId);
