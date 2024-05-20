@@ -40,7 +40,6 @@ function saveToDos(todoToAdd) {
     .then(function (response) {
       console.log("saveToDo() respons: ", response.data);
       refreshToDos();
-      //needs to be refresh not render as the newly added quoala needs to be updated by get in database
     })
     .catch(function (error) {
       console.log("Error in POST", error);

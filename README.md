@@ -7,7 +7,7 @@ STEPS:
 
 1. CREATE A DATABASE TITLED "weekend-to-do-app"
 
-2. CREATE A TABLE WITHIN THE DATABASE WITH THE SQL COMMANDS LOCATED WITHIN 'database.sql"
+2. CREATE A TABLE WITHIN THE DATABASE WITH THE SQL COMMANDS LOCATED WITHIN THE 'database.sql"
 
 3. RUN 'npm install' to ensure modules are available
 

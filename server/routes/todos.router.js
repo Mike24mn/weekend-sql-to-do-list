@@ -40,13 +40,12 @@ router.post('/', (req, res) => {
       });
   });
 
-// PUT
+// PUT BY ID
 router.put('/:id', (req, res) => {
 
     
     let todoId = req.params.id;
-    //not sure if I should change direction 
-    //isRead refers to the body as the isRead is in the data part of put request
+
     let isComplete  = req.body.isComplete;
   
     let queryText = `
@@ -55,12 +54,10 @@ router.put('/:id', (req, res) => {
 `
     console.log("Change complete: ", todoId, isComplete)
   
-  //line 56 confuses me 
+ 
   
   
-    //in the below statement [] turns the todoId into an Array
 
-    // pool.query needed to take queryText and both todoId and transfer, it was missing transfer - Michael
 
     pool.query(queryText, [todoId])
       .then((result) => {
@@ -72,7 +69,7 @@ router.put('/:id', (req, res) => {
       })
   })
 
-// DELETE
+// DELETE BY ID
 
 router.delete('/:id', (req, res) => {
 
