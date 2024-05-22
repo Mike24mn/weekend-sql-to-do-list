@@ -160,7 +160,7 @@ function isFinished(complete, todoId) {
     method: "PUT",
     url: "/todos/" + todoId,
     data: {
-      complete: complete,
+      completeOrNot: complete,
     },
   })
     .then((response) => {
